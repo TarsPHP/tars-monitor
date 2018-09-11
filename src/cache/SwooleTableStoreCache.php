@@ -22,7 +22,7 @@ class SwooleTableStoreCache implements StoreCacheInterface
 
         $this->_swooleTable->create();
 
-        $this->_swooleTableKey = new \swoole_table(4096);
+        $this->_swooleTableKey = new \swoole_table(40960);
         $this->_swooleTableKey->column('key', \swoole_table::TYPE_STRING, 256);
         $this->_swooleTableKey->create();
     }
