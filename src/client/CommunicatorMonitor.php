@@ -93,8 +93,10 @@ class CommunicatorMonitor
         }
 
         if (!\socket_write($sock, $requestBuf, strlen($requestBuf))) {
-            \socket_close($sock);
-            throw new \Exception();
+            if (!\socket_write($sock, $requestBuf, strlen($requestBuf))) {
+                \socket_close($sock);
+                throw new \Exception();
+            }
         }
         \socket_close($sock);
 
@@ -111,9 +113,11 @@ class CommunicatorMonitor
         }
 
         if (!$client->send($requestBuf)) {
-            $client->close();
-            $code = CodeMonitor::TARS_SOCKET_SEND_FAILED;
-            throw new \Exception(CodeMonitor::getErrMsg($code), $code);
+            if(!$client->send($requestBuf)) {
+                $client->close();
+                $code = CodeMonitor::TARS_SOCKET_SEND_FAILED;
+                throw new \Exception(CodeMonitor::getErrMsg($code), $code);
+            }
         }
         $client->close();
 
@@ -130,9 +134,11 @@ class CommunicatorMonitor
         }
 
         if (!$client->send($requestBuf)) {
-            $client->close();
-            $code = CodeMonitor::TARS_SOCKET_SEND_FAILED;
-            throw new \Exception(CodeMonitor::getErrMsg($code), $code);
+            if (!$client->send($requestBuf)) {
+                $client->close();
+                $code = CodeMonitor::TARS_SOCKET_SEND_FAILED;
+                throw new \Exception(CodeMonitor::getErrMsg($code), $code);
+            }
         }
         $client->close();
 

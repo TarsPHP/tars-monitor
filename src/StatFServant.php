@@ -52,7 +52,8 @@ class StatFServant {
 
         }
         catch (\Exception $e) {
-            throw $e;
+            error_log("reportMicMsg Exception:" . $e->getMessage());
+            return;
         }
     }
 
