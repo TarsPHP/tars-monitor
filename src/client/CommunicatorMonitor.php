@@ -79,7 +79,7 @@ class CommunicatorMonitor
         }
     }
 
-    private function socketTcp($sIp, $iPort, $requestBuf, $timeout = 2)
+    private function socketTcp($sIp, $iPort, $requestBuf, $timeout = 5)
     {
         $sock = \socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
@@ -103,9 +103,9 @@ class CommunicatorMonitor
         return;
     }
 
-    private function swooleTcp($sIp, $iPort, $requestBuf, $timeout = 2)
+    private function swooleTcp($sIp, $iPort, $requestBuf, $timeout = 5)
     {
-        $client = new \swoole_client(SWOOLE_SOCK_TCP | SWOOLE_KEEP);
+        $client = new \swoole_client(SWOOLE_SOCK_TCP);
 
         if (!$client->connect($sIp, $iPort, $timeout)) {
             $code = CodeMonitor::TARS_SOCKET_CONNECT_FAILED;
@@ -113,6 +113,12 @@ class CommunicatorMonitor
         }
 
         if (!$client->send($requestBuf)) {
+            // 重试
+            if (!$client->connect($sIp, $iPort, $timeout)) {
+                $code = CodeMonitor::TARS_SOCKET_CONNECT_FAILED;
+                throw new \Exception(CodeMonitor::getErrMsg($code), $code);
+            }
+
             if(!$client->send($requestBuf)) {
                 $client->close();
                 $code = CodeMonitor::TARS_SOCKET_SEND_FAILED;
@@ -124,7 +130,7 @@ class CommunicatorMonitor
         return;
     }
 
-    private function swooleCoroutineTcp($sIp, $iPort, $requestBuf, $timeout = 2)
+    private function swooleCoroutineTcp($sIp, $iPort, $requestBuf, $timeout = 5)
     {
         $client = new \Swoole\Coroutine\Client(SWOOLE_SOCK_TCP);
 
@@ -134,6 +140,11 @@ class CommunicatorMonitor
         }
 
         if (!$client->send($requestBuf)) {
+            // 重试连接
+            if (!$client->connect($sIp, $iPort, $timeout)) {
+                $code = CodeMonitor::TARS_SOCKET_CONNECT_FAILED;
+                throw new \Exception(CodeMonitor::getErrMsg($code), $code);
+            }
             if (!$client->send($requestBuf)) {
                 $client->close();
                 $code = CodeMonitor::TARS_SOCKET_SEND_FAILED;
