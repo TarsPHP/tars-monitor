@@ -29,47 +29,47 @@ class StatSampleMsg extends \TARS_Struct
             'name' => 'unid',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::MASTERNAME => array(
             'name' => 'masterName',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::SLAVENAME => array(
             'name' => 'slaveName',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::INTERFACENAME => array(
             'name' => 'interfaceName',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::MASTERIP => array(
             'name' => 'masterIp',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::SLAVEIP => array(
             'name' => 'slaveIp',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::DEPTH => array(
             'name' => 'depth',
             'required' => true,
             'type' => \TARS::INT32,
-            ),
+        ),
         self::WIDTH => array(
             'name' => 'width',
             'required' => true,
             'type' => \TARS::INT32,
-            ),
+        ),
         self::PARENTWIDTH => array(
             'name' => 'parentWidth',
             'required' => true,
             'type' => \TARS::INT32,
-            ),
+        ),
     );
 
     public function __construct()

@@ -13,7 +13,7 @@ class ProxyInfo extends \TARS_Struct
             'name' => 'bFromClient',
             'required' => true,
             'type' => \TARS::BOOL,
-            ),
+        ),
     );
 
     public function __construct()

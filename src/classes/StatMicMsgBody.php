@@ -25,37 +25,37 @@ class StatMicMsgBody extends \TARS_Struct
             'name' => 'count',
             'required' => true,
             'type' => \TARS::INT32,
-            ),
+        ),
         self::TIMEOUTCOUNT => array(
             'name' => 'timeoutCount',
             'required' => true,
             'type' => \TARS::INT32,
-            ),
+        ),
         self::EXECCOUNT => array(
             'name' => 'execCount',
             'required' => true,
             'type' => \TARS::INT32,
-            ),
+        ),
         self::INTERVALCOUNT => array(
             'name' => 'intervalCount',
             'required' => true,
             'type' => \TARS::MAP,
-            ),
+        ),
         self::TOTALRSPTIME => array(
             'name' => 'totalRspTime',
             'required' => true,
             'type' => \TARS::INT64,
-            ),
+        ),
         self::MAXRSPTIME => array(
             'name' => 'maxRspTime',
             'required' => true,
             'type' => \TARS::INT32,
-            ),
+        ),
         self::MINRSPTIME => array(
             'name' => 'minRspTime',
             'required' => true,
             'type' => \TARS::INT32,
-            ),
+        ),
     );
 
     public function __construct()

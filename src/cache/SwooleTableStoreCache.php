@@ -1,4 +1,5 @@
 <?php
+
 namespace Tars\monitor\cache;
 
 use Tars\monitor\contract\StoreCacheInterface;

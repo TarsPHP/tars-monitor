@@ -15,12 +15,12 @@ class StatPropInfo extends \TARS_Struct
             'name' => 'policy',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::VALUE => array(
             'name' => 'value',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
     );
 
     public function __construct()

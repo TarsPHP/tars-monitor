@@ -92,6 +92,7 @@ class CommunicatorConfig
     {
         return $this->routeInfo;
     }
+
     public function setRouteInfo($routeInfo)
     {
         $this->routeInfo = $routeInfo;

@@ -13,7 +13,7 @@ class StatPropMsgBody extends \TARS_Struct
             'name' => 'vInfo',
             'required' => true,
             'type' => \TARS::VECTOR,
-            ),
+        ),
     );
 
     public function __construct()

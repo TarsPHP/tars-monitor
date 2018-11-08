@@ -19,9 +19,12 @@ class PropertyFWrapper
 
     protected $_masterName = '';
 
-    public function __construct($locator, $socketMode, $moduleName = 'php',
-                                $propertyName = 'tars.tarsproperty.PropertyObj')
-    {
+    public function __construct(
+        $locator,
+        $socketMode,
+        $moduleName = 'php',
+        $propertyName = 'tars.tarsproperty.PropertyObj'
+    ) {
         $result = Utils::getLocatorInfo($locator);
         if (empty($result) || !isset($result['locatorName'])
             || !isset($result['routeInfo']) || empty($result['routeInfo'])) {
@@ -32,10 +35,18 @@ class PropertyFWrapper
         $this->_propertyF = new PropertyFServant($locator, $socketMode, $propertyName);
     }
 
-    public function monitorProperty($ip, $propertyName, $policy, $value, $moduleName = '',
-                                    $setName = '', $setArea = '', $setID = '',
-                                    $sContainer = '', $iPropertyVer = 1)
-    {
+    public function monitorProperty(
+        $ip,
+        $propertyName,
+        $policy,
+        $value,
+        $moduleName = '',
+        $setName = '',
+        $setArea = '',
+        $setID = '',
+        $sContainer = '',
+        $iPropertyVer = 1
+    ) {
         $msgHead = new StatPropMsgHead();
         $msgHead->moduleName = empty($moduleName) ? $this->_moduleName : $moduleName;
         $msgHead->ip = empty($ip) ? '127.0.0.1' : $ip;

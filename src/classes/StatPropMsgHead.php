@@ -27,42 +27,42 @@ class StatPropMsgHead extends \TARS_Struct
             'name' => 'moduleName',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::IP => array(
             'name' => 'ip',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::PROPERTYNAME => array(
             'name' => 'propertyName',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::SETNAME => array(
             'name' => 'setName',
             'required' => false,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::SETAREA => array(
             'name' => 'setArea',
             'required' => false,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::SETID => array(
             'name' => 'setID',
             'required' => false,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::SCONTAINER => array(
             'name' => 'sContainer',
             'required' => false,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::IPROPERTYVER => array(
             'name' => 'iPropertyVer',
             'required' => false,
             'type' => \TARS::INT32,
-            ),
+        ),
     );
 
     public function __construct()

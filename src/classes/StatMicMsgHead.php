@@ -33,57 +33,57 @@ class StatMicMsgHead extends \TARS_Struct
             'name' => 'masterName',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::SLAVENAME => array(
             'name' => 'slaveName',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::INTERFACENAME => array(
             'name' => 'interfaceName',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::MASTERIP => array(
             'name' => 'masterIp',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::SLAVEIP => array(
             'name' => 'slaveIp',
             'required' => true,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::SLAVEPORT => array(
             'name' => 'slavePort',
             'required' => true,
             'type' => \TARS::INT32,
-            ),
+        ),
         self::RETURNVALUE => array(
             'name' => 'returnValue',
             'required' => true,
             'type' => \TARS::INT32,
-            ),
+        ),
         self::SLAVESETNAME => array(
             'name' => 'slaveSetName',
             'required' => false,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::SLAVESETAREA => array(
             'name' => 'slaveSetArea',
             'required' => false,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::SLAVESETID => array(
             'name' => 'slaveSetID',
             'required' => false,
             'type' => \TARS::STRING,
-            ),
+        ),
         self::TARSVERSION => array(
             'name' => 'tarsVersion',
             'required' => false,
             'type' => \TARS::STRING,
-            ),
+        ),
     );
 
     public function __construct()

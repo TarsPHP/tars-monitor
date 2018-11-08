@@ -23,12 +23,13 @@ class TUPAPIWrapper
                 throw new \Exception(Code::getErrMsg(Code::TARS_PUT_BOOL_FAILED), Code::TARS_PUT_BOOL_FAILED);
             }
 
-            return  $boolBuffer;
+            return $boolBuffer;
         } catch (\Exception $e) {
             $code = Code::TARS_PUT_BOOL_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
         }
     }
+
     public static function getBool($name, $tag, $sBuffer, $iVersion)
     {
         try {
@@ -57,7 +58,7 @@ class TUPAPIWrapper
                 throw new \Exception(Code::getErrMsg(Code::TARS_PUT_CHAR_FAILED), Code::TARS_PUT_CHAR_FAILED);
             }
 
-            return  $charBuffer;
+            return $charBuffer;
         } catch (\Exception $e) {
             $code = Code::TARS_PUT_CHAR_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -73,7 +74,7 @@ class TUPAPIWrapper
                 $result = \TUPAPI::getChar($name, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = Code::TARS_GET_CHAR_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -108,7 +109,7 @@ class TUPAPIWrapper
                 $result = \TUPAPI::getUint8($name, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = Code::TARS_GET_UINT8_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -127,7 +128,7 @@ class TUPAPIWrapper
                 throw new \Exception(Code::getErrMsg(Code::TARS_PUT_SHORT_FAILED), Code::TARS_PUT_SHORT_FAILED);
             }
 
-            return  $shortBuffer;
+            return $shortBuffer;
         } catch (\Exception $e) {
             $code = Code::TARS_PUT_SHORT_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -178,7 +179,7 @@ class TUPAPIWrapper
                 $result = \TUPAPI::getUint16($name, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = Code::TARS_GET_UINT16_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -197,7 +198,7 @@ class TUPAPIWrapper
                 throw new \Exception(Code::getErrMsg(Code::TARS_PUT_INT32_FAILED), Code::TARS_PUT_INT32_FAILED);
             }
 
-            return  $buffer;
+            return $buffer;
         } catch (\Exception $e) {
             $code = Code::TARS_PUT_INT32_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -248,7 +249,7 @@ class TUPAPIWrapper
                 $result = \TUPAPI::getUint32($name, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = Code::TARS_GET_UINT32_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -283,7 +284,7 @@ class TUPAPIWrapper
                 $result = \TUPAPI::getInt64($name, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = Code::TARS_GET_INT64_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -302,7 +303,7 @@ class TUPAPIWrapper
                 throw new \Exception(Code::getErrMsg(Code::TARS_PUT_DOUBLE_FAILED), Code::TARS_PUT_DOUBLE_FAILED);
             }
 
-            return  $buffer;
+            return $buffer;
         } catch (\Exception $e) {
             $code = Code::TARS_PUT_DOUBLE_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -318,7 +319,7 @@ class TUPAPIWrapper
                 $result = \TUPAPI::getDouble($name, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = Code::TARS_GET_DOUBLE_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -337,7 +338,7 @@ class TUPAPIWrapper
                 throw new \Exception(Code::getErrMsg(Code::TARS_PUT_FLOAT_FAILED), Code::TARS_PUT_FLOAT_FAILED);
             }
 
-            return  $buffer;
+            return $buffer;
         } catch (\Exception $e) {
             $code = Code::TARS_PUT_FLOAT_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -391,7 +392,7 @@ class TUPAPIWrapper
                 throw new \Exception(Code::getErrMsg(Code::TARS_GET_STRING_FAILED), Code::TARS_GET_STRING_FAILED);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = Code::TARS_GET_STRING_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -426,7 +427,7 @@ class TUPAPIWrapper
                 $result = \TUPAPI::getVector($name, $vec, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = Code::TARS_GET_VECTOR_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);
@@ -464,7 +465,7 @@ class TUPAPIWrapper
                 throw new \Exception(Code::getErrMsg(Code::TARS_GET_MAP_FAILED), Code::TARS_GET_MAP_FAILED);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = Code::TARS_GET_MAP_FAILED;
             throw new \Exception(Code::getErrMsg($code), $code);

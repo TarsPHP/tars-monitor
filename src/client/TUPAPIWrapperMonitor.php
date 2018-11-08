@@ -20,15 +20,17 @@ class TUPAPIWrapperMonitor
             }
 
             if (!is_string($boolBuffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_BOOL_FAILED), CodeMonitor::TARS_PUT_BOOL_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_BOOL_FAILED),
+                    CodeMonitor::TARS_PUT_BOOL_FAILED);
             }
 
-            return  $boolBuffer;
+            return $boolBuffer;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_PUT_BOOL_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
         }
     }
+
     public static function getBool($name, $tag, $sBuffer, $iVersion)
     {
         try {
@@ -54,10 +56,11 @@ class TUPAPIWrapperMonitor
                 $charBuffer = \TUPAPI::putChar($paramName, $char, $iVersion);
             }
             if (!is_string($charBuffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_CHAR_FAILED), CodeMonitor::TARS_PUT_CHAR_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_CHAR_FAILED),
+                    CodeMonitor::TARS_PUT_CHAR_FAILED);
             }
 
-            return  $charBuffer;
+            return $charBuffer;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_PUT_CHAR_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -73,7 +76,7 @@ class TUPAPIWrapperMonitor
                 $result = \TUPAPI::getChar($name, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_GET_CHAR_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -89,7 +92,8 @@ class TUPAPIWrapperMonitor
                 $uint8Buffer = \TUPAPI::putUint8($paramName, $uint8, $iVersion);
             }
             if (!is_string($uint8Buffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_UINT8_FAILED), CodeMonitor::TARS_PUT_UINT8_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_UINT8_FAILED),
+                    CodeMonitor::TARS_PUT_UINT8_FAILED);
             }
 
             return $uint8Buffer;
@@ -108,7 +112,7 @@ class TUPAPIWrapperMonitor
                 $result = \TUPAPI::getUint8($name, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_GET_UINT8_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -124,10 +128,11 @@ class TUPAPIWrapperMonitor
                 $shortBuffer = \TUPAPI::putShort($paramName, $short, $iVersion);
             }
             if (!is_string($shortBuffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_SHORT_FAILED), CodeMonitor::TARS_PUT_SHORT_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_SHORT_FAILED),
+                    CodeMonitor::TARS_PUT_SHORT_FAILED);
             }
 
-            return  $shortBuffer;
+            return $shortBuffer;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_PUT_SHORT_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -159,7 +164,8 @@ class TUPAPIWrapperMonitor
                 $buffer = \TUPAPI::putUint16($paramName, $uint16, $iVersion);
             }
             if (!is_string($buffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_UINT16_FAILED), CodeMonitor::TARS_PUT_UINT16_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_UINT16_FAILED),
+                    CodeMonitor::TARS_PUT_UINT16_FAILED);
             }
 
             return $buffer;
@@ -178,7 +184,7 @@ class TUPAPIWrapperMonitor
                 $result = \TUPAPI::getUint16($name, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_GET_UINT16_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -194,10 +200,11 @@ class TUPAPIWrapperMonitor
                 $buffer = \TUPAPI::putInt32($paramName, $int, $iVersion);
             }
             if (!is_string($buffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_INT32_FAILED), CodeMonitor::TARS_PUT_INT32_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_INT32_FAILED),
+                    CodeMonitor::TARS_PUT_INT32_FAILED);
             }
 
-            return  $buffer;
+            return $buffer;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_PUT_INT32_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -229,7 +236,8 @@ class TUPAPIWrapperMonitor
                 $buffer = \TUPAPI::putInt32($paramName, $uint, $iVersion);
             }
             if (!is_string($buffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_UINT32_FAILED), CodeMonitor::TARS_PUT_UINT32_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_UINT32_FAILED),
+                    CodeMonitor::TARS_PUT_UINT32_FAILED);
             }
 
             return $buffer;
@@ -248,7 +256,7 @@ class TUPAPIWrapperMonitor
                 $result = \TUPAPI::getUint32($name, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_GET_UINT32_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -264,7 +272,8 @@ class TUPAPIWrapperMonitor
                 $buffer = \TUPAPI::putInt64($paramName, $bigint, $iVersion);
             }
             if (!is_string($buffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_INT64_FAILED), CodeMonitor::TARS_PUT_INT64_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_INT64_FAILED),
+                    CodeMonitor::TARS_PUT_INT64_FAILED);
             }
 
             return $buffer;
@@ -283,7 +292,7 @@ class TUPAPIWrapperMonitor
                 $result = \TUPAPI::getInt64($name, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_GET_INT64_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -299,10 +308,11 @@ class TUPAPIWrapperMonitor
                 $buffer = \TUPAPI::putDouble($paramName, $double, $iVersion);
             }
             if (!is_string($buffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_DOUBLE_FAILED), CodeMonitor::TARS_PUT_DOUBLE_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_DOUBLE_FAILED),
+                    CodeMonitor::TARS_PUT_DOUBLE_FAILED);
             }
 
-            return  $buffer;
+            return $buffer;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_PUT_DOUBLE_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -318,7 +328,7 @@ class TUPAPIWrapperMonitor
                 $result = \TUPAPI::getDouble($name, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_GET_DOUBLE_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -334,10 +344,11 @@ class TUPAPIWrapperMonitor
                 $buffer = \TUPAPI::putFloat($paramName, $float, $iVersion);
             }
             if (!is_string($buffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_FLOAT_FAILED), CodeMonitor::TARS_PUT_FLOAT_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_FLOAT_FAILED),
+                    CodeMonitor::TARS_PUT_FLOAT_FAILED);
             }
 
-            return  $buffer;
+            return $buffer;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_PUT_FLOAT_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -369,7 +380,8 @@ class TUPAPIWrapperMonitor
                 $buffer = \TUPAPI::putString($paramName, $string, $iVersion);
             }
             if (!is_string($buffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_STRING_FAILED), CodeMonitor::TARS_PUT_STRING_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_STRING_FAILED),
+                    CodeMonitor::TARS_PUT_STRING_FAILED);
             }
 
             return $buffer;
@@ -388,10 +400,11 @@ class TUPAPIWrapperMonitor
                 $result = \TUPAPI::getString($name, $sBuffer, false, $iVersion);
             }
             if ($result < 0) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_GET_STRING_FAILED), CodeMonitor::TARS_GET_STRING_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_GET_STRING_FAILED),
+                    CodeMonitor::TARS_GET_STRING_FAILED);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_GET_STRING_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -407,7 +420,8 @@ class TUPAPIWrapperMonitor
                 $buffer = \TUPAPI::putVector($paramName, $vec, $iVersion);
             }
             if (!is_string($buffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_VECTOR_FAILED), CodeMonitor::TARS_PUT_VECTOR_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_VECTOR_FAILED),
+                    CodeMonitor::TARS_PUT_VECTOR_FAILED);
             }
 
             return $buffer;
@@ -426,7 +440,7 @@ class TUPAPIWrapperMonitor
                 $result = \TUPAPI::getVector($name, $vec, $sBuffer, false, $iVersion);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_GET_VECTOR_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -442,7 +456,8 @@ class TUPAPIWrapperMonitor
                 $buffer = \TUPAPI::putMap($paramName, $map, $iVersion);
             }
             if (!is_string($buffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_MAP_FAILED), CodeMonitor::TARS_PUT_MAP_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_MAP_FAILED),
+                    CodeMonitor::TARS_PUT_MAP_FAILED);
             }
 
             return $buffer;
@@ -461,10 +476,11 @@ class TUPAPIWrapperMonitor
                 $result = \TUPAPI::getMap($name, $obj, $sBuffer, false, $iVersion);
             }
             if (!is_array($result)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_GET_MAP_FAILED), CodeMonitor::TARS_GET_MAP_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_GET_MAP_FAILED),
+                    CodeMonitor::TARS_GET_MAP_FAILED);
             }
 
-            return  $result;
+            return $result;
         } catch (\Exception $e) {
             $code = CodeMonitor::TARS_GET_MAP_FAILED;
             throw new \Exception(CodeMonitor::getErrMsg($code), $code);
@@ -480,7 +496,8 @@ class TUPAPIWrapperMonitor
                 $buffer = \TUPAPI::putStruct($paramName, $obj, $iVersion);
             }
             if (!is_string($buffer)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_STRUCT_FAILED), CodeMonitor::TARS_PUT_STRUCT_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_PUT_STRUCT_FAILED),
+                    CodeMonitor::TARS_PUT_STRUCT_FAILED);
             }
 
             return $buffer;
@@ -500,7 +517,8 @@ class TUPAPIWrapperMonitor
             }
 
             if (!is_array($result)) {
-                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_GET_STRUCT_FAILED), CodeMonitor::TARS_GET_STRUCT_FAILED);
+                throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_GET_STRUCT_FAILED),
+                    CodeMonitor::TARS_GET_STRUCT_FAILED);
             }
             self::fromArray($result, $obj);
 

@@ -251,7 +251,7 @@ class StatFWrapper
     public function getTimeSlice($interval)
     {
         $time = time();
-        return (int)($time / ($interval/1000));
+        return (int)($time / ($interval / 1000));
     }
 }
 

@@ -27,9 +27,11 @@ class CommunicatorMonitor
     protected $_socketMode; //1 socket ,2 swoole sync ,3 swoole coroutine
     protected $_iVersion;
 
-    public function __construct($locator, $servantName,
-                                $socketMode)
-    {
+    public function __construct(
+        $locator,
+        $servantName,
+        $socketMode
+    ) {
         $this->_locator = $locator;
         $this->_timeout = 2;
 
@@ -56,21 +58,24 @@ class CommunicatorMonitor
 
             switch ($this->_socketMode) {
                 // 单纯的socket
-                case 1:{
-                    $this->socketTcp($sIp, $iPort,
-                        $requestBuf, $timeout);
-                    break;
-                }
-                case 2:{
-                    $this->swooleTcp($sIp, $iPort,
-                        $requestBuf, $timeout);
-                    break;
-                }
-                case 3:{
-                    $this->swooleCoroutineTcp($sIp, $iPort,
-                        $requestBuf, $timeout);
-                    break;
-                }
+                case 1:
+                    {
+                        $this->socketTcp($sIp, $iPort,
+                            $requestBuf, $timeout);
+                        break;
+                    }
+                case 2:
+                    {
+                        $this->swooleTcp($sIp, $iPort,
+                            $requestBuf, $timeout);
+                        break;
+                    }
+                case 3:
+                    {
+                        $this->swooleCoroutineTcp($sIp, $iPort,
+                            $requestBuf, $timeout);
+                        break;
+                    }
             }
 
             return;
@@ -84,7 +89,8 @@ class CommunicatorMonitor
         $sock = \socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
         if (false === $sock) {
-            throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_SOCKET_CREATE_FAILED), CodeMonitor::TARS_SOCKET_CREATE_FAILED);
+            throw new \Exception(CodeMonitor::getErrMsg(CodeMonitor::TARS_SOCKET_CREATE_FAILED),
+                CodeMonitor::TARS_SOCKET_CREATE_FAILED);
         }
 
         if (!\socket_connect($sock, $sIp, $iPort)) {
@@ -119,7 +125,7 @@ class CommunicatorMonitor
                 throw new \Exception(CodeMonitor::getErrMsg($code), $code);
             }
 
-            if(!$client->send($requestBuf)) {
+            if (!$client->send($requestBuf)) {
                 $client->close();
                 $code = CodeMonitor::TARS_SOCKET_SEND_FAILED;
                 throw new \Exception(CodeMonitor::getErrMsg($code), $code);
