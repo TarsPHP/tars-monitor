@@ -14,7 +14,7 @@
     }
   ],
   "require":{
-    "php": ">=5.3",
+    "php": ">=5.5",
     "phptars/tars-utils": "~0.1",
     "phptars/tars-registry": "~0.1"
   },

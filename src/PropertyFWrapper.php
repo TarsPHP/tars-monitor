@@ -66,19 +66,44 @@ class PropertyFWrapper
         $this->reportPropMsg($msg);
     }
 
+    public function monitorPropertyBatch($msgHeadArr, $msgBodyArr)
+    {
+        foreach ($msgHeadArr as $key => $msgHead) {
+            $propMsgHead = new StatPropMsgHead();
+            $propMsgHead->moduleName = empty($msgHead['moduleName']) ? $this->_moduleName : $msgHead['moduleName'];
+            $propMsgHead->ip = empty($msgHead['ip']) ? '127.0.0.1' : $msgHead['ip'];
+            $propMsgHead->propertyName = $msgHead['propertyName'];
+            if (!empty($setName)) {
+                $propMsgHead->setName = $msgHead['setName'];
+            }
+            if (!empty($setArea)) {
+                $propMsgHead->setArea = $msgHead['setArea'];
+            }
+            if (!empty($setID)) {
+                $propMsgHead->setID = $msgHead['setID'];
+            }
+            if (!empty($sContainer)) {
+                $propMsgHead->sContainer = $msgHead['sContainer'];
+            }
+            $propMsgHead->iPropertyVer = $msgHead['iPropertyVer'];
+
+            $msgBody = $msgBodyArr[$key];
+            $propMsgBody = new StatPropMsgBody();
+
+            $propInfo = new StatPropInfo();
+            $propInfo->policy = $msgBody['policy'];
+            $propInfo->value = $msgBody['value'];
+
+            $propMsgBody->vInfo->pushBack($propInfo);
+            $msg[] = ['key' => $propMsgHead, 'value' => $propMsgBody];
+        }
+        $this->reportPropMsg($msg);
+    }
+
     /**
-     * @param $moduleName
-     * @param $ip
-     * @param $propertyName
-     * @param $policies
-     * @param $values
-     * @param string $setName
-     * @param string $setArea
-     * @param string $setID
-     * @param string $sContainer
-     * @param int    $iPropertyVer
-     *
-     * @return bool
+     * @param $statmsg
+     * @return void
+     * @throws \Exception
      */
     public function reportPropMsg($statmsg)
     {
