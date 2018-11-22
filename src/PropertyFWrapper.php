@@ -84,19 +84,19 @@ class PropertyFWrapper
             $propMsgHead->moduleName = empty($msgHead['moduleName']) ? $this->_moduleName : $msgHead['moduleName'];
             $propMsgHead->ip = empty($msgHead['ip']) ? '127.0.0.1' : $msgHead['ip'];
             $propMsgHead->propertyName = $msgHead['propertyName'];
-            if (!empty($setName)) {
+            if (isset($msgHead['setName'])) {
                 $propMsgHead->setName = $msgHead['setName'];
             }
-            if (!empty($setArea)) {
+            if (isset($msgHead['setArea'])) {
                 $propMsgHead->setArea = $msgHead['setArea'];
             }
-            if (!empty($setID)) {
+            if (isset($msgHead['setID'])) {
                 $propMsgHead->setID = $msgHead['setID'];
             }
-            if (!empty($sContainer)) {
+            if (isset($msgHead['sContainer'])) {
                 $propMsgHead->sContainer = $msgHead['sContainer'];
             }
-            $propMsgHead->iPropertyVer = $msgHead['iPropertyVer'];
+            $propMsgHead->iPropertyVer = isset($msgHead['iPropertyVer']) ? $msgHead['iPropertyVer'] : 1;
 
             $msgBody = $msgBodyArr[$key];
             $propMsgBody = new StatPropMsgBody();
