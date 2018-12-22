@@ -2,7 +2,7 @@
   "name": "phptars/tars-monitor",
   "description": "tars的主调和特性上报",
   "minimum-stability": "dev",
-  "version":"0.1.8",
+  "version":"0.2.0",
   "authors": [
     {
       "name": "Jingfeng Liu",
@@ -10,7 +10,7 @@
     },
     {
       "name": "Chen liang",
-      "email": "liangchen@yuewen.com"
+      "email": "cedricliang21@gmail.com"
     }
   ],
   "require":{
