@@ -7,7 +7,7 @@ use Tars\monitor\classes\StatPropMsgBody;
 use Tars\monitor\classes\StatPropMsgHead;
 use Tars\Utils;
 
-class PropertyFWrapper
+class PropertyFServer
 {
     protected $_propertyF;
     protected $_routeInfo;

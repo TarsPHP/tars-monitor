@@ -7,7 +7,7 @@ use Tars\monitor\classes\StatMicMsgHead;
 use Tars\monitor\contract\StoreCacheInterface;
 use Tars\Utils;
 
-class StatFWrapper
+class StatFServer
 {
 
     protected $_statF;
