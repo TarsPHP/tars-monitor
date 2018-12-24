@@ -2,7 +2,7 @@
   "name": "phptars/tars-monitor",
   "description": "tars的主调和特性上报",
   "minimum-stability": "dev",
-  "version":"0.2.0",
+  "version":"0.2.1",
   "authors": [
     {
       "name": "Jingfeng Liu",
