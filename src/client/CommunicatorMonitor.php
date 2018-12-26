@@ -38,7 +38,7 @@ class CommunicatorMonitor
         $this->_servantName = $servantName;
 
         $this->_socketMode = $socketMode;
-        $this->_iVersion = 3;
+        $this->_iVersion = 1;
 
         // 完成服务的路由
         $this->_queryF = new QueryFWrapper($this->_locator, $this->_socketMode, 60000);
@@ -48,34 +48,40 @@ class CommunicatorMonitor
     // 同步的socket tcp收发
     public function invoke(RequestPacketMonitor $requestPacket, $timeout)
     {
+
+        $requestBuf = $requestPacket->encode();
+
+        $count = count($this->_routeInfo) - 1;
+        if($count == -1) {
+            error_log("Communicator monitor route failed servantName:"
+                . $this->_servantName. "\n");
+            return;
+        }
+        $index = rand(0, $count);
+        $sIp = $this->_routeInfo[$index]['sIp'];
+        $iPort = $this->_routeInfo[$index]['iPort'];
+
         try {
-            $requestBuf = $requestPacket->encode();
-
-            $count = count($this->_routeInfo) - 1;
-            $index = rand(0, $count);
-            $sIp = $this->_routeInfo[$index]['sIp'];
-            $iPort = $this->_routeInfo[$index]['iPort'];
-
             switch ($this->_socketMode) {
                 // 单纯的socket
                 case 1:
-                    {
-                        $this->socketTcp($sIp, $iPort,
-                            $requestBuf, $timeout);
-                        break;
-                    }
+                {
+                    $this->socketTcp($sIp, $iPort,
+                        $requestBuf, $timeout);
+                    break;
+                }
                 case 2:
-                    {
-                        $this->swooleTcp($sIp, $iPort,
-                            $requestBuf, $timeout);
-                        break;
-                    }
+                {
+                    $this->swooleTcp($sIp, $iPort,
+                        $requestBuf, $timeout);
+                    break;
+                }
                 case 3:
-                    {
-                        $this->swooleCoroutineTcp($sIp, $iPort,
-                            $requestBuf, $timeout);
-                        break;
-                    }
+                {
+                    $this->swooleCoroutineTcp($sIp, $iPort,
+                        $requestBuf, $timeout);
+                    break;
+                }
             }
 
             return;
@@ -119,17 +125,10 @@ class CommunicatorMonitor
         }
 
         if (!$client->send($requestBuf)) {
-            // 重试
-            if (!$client->connect($sIp, $iPort, $timeout)) {
-                $code = CodeMonitor::TARS_SOCKET_CONNECT_FAILED;
-                throw new \Exception(CodeMonitor::getErrMsg($code), $code);
-            }
+            $client->close();
+            $code = CodeMonitor::TARS_SOCKET_SEND_FAILED;
+            throw new \Exception(CodeMonitor::getErrMsg($code), $code);
 
-            if (!$client->send($requestBuf)) {
-                $client->close();
-                $code = CodeMonitor::TARS_SOCKET_SEND_FAILED;
-                throw new \Exception(CodeMonitor::getErrMsg($code), $code);
-            }
         }
         $client->close();
 

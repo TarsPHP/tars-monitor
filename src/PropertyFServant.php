@@ -21,7 +21,7 @@ class PropertyFServant
             $this->_servantName = $propertyName;
             $this->_communicator = new CommunicatorMonitor($locator,
                 $this->_servantName, $socketMode);
-            $this->_iVersion = 3;
+            $this->_iVersion = 1;
             $this->_iTimeout = 2;
         } catch (\Exception $e) {
             throw $e;
