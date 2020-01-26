@@ -1,75 +1,148 @@
 # tars-monitor
+
 ------------------
 
-`tars-monitor` 是 `phptars` 服务与特性监控上报模块
 
-它由两个子模块组成：
-* 服务监控
-* 特性监控
 
-## 使用方式
+`Tar monitor is a 'phptars' service and feature monitoring and reporting module
 
-### 安装
 
-使用composer进行安装
+
+It consists of two sub modules:
+
+*Service monitoring
+
+*Feature monitoring
+
+
+
+##How to use
+
+
+
+Installation of cable vehicles
+
+
+
+Using composer for installation
+
 `composer install phptars/tars-monitor`
 
-### 调用
 
-#### 服务监控上报
 
-* locator  为上报地址，一般由服务器下发
-* socketMode 设置为 1 使用 socket 方式进行上报
-   socketMode 设置为 2 使用 swoole tcp client方式进行上报（需要swoole支持）
-   socketMode 设置为 3 使用 swoole tcp coroutine client协程方式进行上报（需要swoole2.0以上支持）
+The call of
 
-#### 定时上报(默认)
-> 使用定时上报需要 swoole_table支持，通过调用addStat将上报信息暂存，tars-server的task进程会搜集一段时间内（上报时间间隔由服务器下发，一般为60s）统一打包上报，可以减少上报请求
+
+
+####Service Monitoring Report
+
+
+
+*Locator is the report address, which is generally distributed by the server
+
+*Socket mode is set to 1, and socket mode is used for reporting
+
+Socketmode is set to 2. Use swoole TCP client mode for reporting (need swoole support)
+
+Socketmode is set to 3. Use swoole TCP coroutine client to report (need support of swoole 2.0 or above)
+
+
+
+####Scheduled reporting (default)
+
+>The use of scheduled reporting requires the support of swoole table. By calling addstat, the reporting information will be temporarily saved. The task process of the tar server will collect and package the reporting information for a period of time (the reporting interval is issued by the server, generally 60s), which can reduce the reporting request
+
 ```php
+
 $locator = "tars.tarsregistry.QueryObj@tcp -h 172.16.0.161 -p 17890";
+
 $socketMode = 1;
-$statfWrapper  = new \Tars\monitor\StatFWrapper($locator,$socketMode);  
-$statfWrapper->addStat("PHPTest.helloTars.obj","test","172.16.0.116",51003,200,0,0);  
-$statfWrapper->addStat("PHPTest.helloTars.obj","test","172.16.0.116",51003,200,0,0);  
+
+$statfWrapper = new \Tars\monitor\StatFWrapper($locator,$socketMode);
+
 $statfWrapper->addStat("PHPTest.helloTars.obj","test","172.16.0.116",51003,200,0,0);
-```
 
-上报数据可使用多种存储方式，cache中提供了`swoole_table`与`redis`的实现方式，用户也可以自己实现`contract/StoreCacheInterface`，配置存储方式参考demo `tars-http-server` 中`src/services.php` 的配置。
+$statfWrapper->addStat("PHPTest.helloTars.obj","test","172.16.0.116",51003,200,0,0);
+
+$statfWrapper->addStat("PHPTest.helloTars.obj","test","172.16.0.116",51003,200,0,0);
+
+` ` ` `
+
+
+
+Report data can be stored in a variety of ways. Cache provides the implementation of 'swoole table' and 'redis'. Users can also implement' contract / storecache interface 'by themselves. Refer to the configuration of' Src / services. PHP 'in demo' tar HTTP server 'for the configuration of storage methods.
+
 ```php
+
 return array(
-    'namespaceName' => 'HttpServer\\',
-    'monitorStoreConf' => [
-        'className' => Tars\monitor\cache\SwooleTableStoreCache::class,
-        'config' => []
-    ]
+
+'namespaceName' => 'HttpServer\\',
+
+'monitorStoreConf' => [
+
+'className' => Tars\monitor\cache\SwooleTableStoreCache::class,
+
+'config' => []
+
+]
+
 );
-```
-`monitorStoreConf` 为存储方式的配置，其中`className`为实现类，`config` 为对应的配置，如使用redis存储方式时，config中需要配置redis的host、port、以及key的前缀等。
-未配置`monitorStoreConf`时默认使用`SwooleTableStoreCache`进行存储。
+
+` ` ` `
+
+`Monitorstoreconf 'is the configuration of storage mode, where' classname 'is the implementation class and' config 'is the corresponding configuration. For example, when using the redis storage mode, the host, port and key prefix of redis need to be configured in config.
+
+When 'monitorstoreconf' is not configured, 'swooletablestorecache' is used for storage by default.
 
 
-#### 单次上报
-> 同时`tars-monitor`也提供了单次上报的接口`monitorStat`，即每次tars请求调用均会进行一次上报，该方式不建议使用
+
+
+####Single report
+
+>At the same time, 'tar monitor' also provides a single escalation interface, 'monitorstat'. That is to say, each call of tar request will be reported once, which is not recommended
+
 ```php
+
 $locator = "tars.tarsregistry.QueryObj@tcp -h 172.16.0.161 -p 17890";
+
 $socketMode = 1;
-$statfWrapper  = new \Tars\monitor\StatFWrapper($locator,$socketMode);  
+
+$statfWrapper = new \Tars\monitor\StatFWrapper($locator,$socketMode);
+
 $statfWrapper->monitorStat("PHPTest.helloTars.obj","test","172.16.0.116",51003,200,0,0);
-```
 
-#### 特性监控
+` ` ` `
 
-参数与服务监控类似
+
+
+####Feature monitoring
+
+
+
+Parameters are similar to service monitoring
+
+
 
 ```php
-$statfWrapper  = new \Tars\monitor\PropertyFWrapper("tars.tarsregistry.QueryObj@tcp -h 172.16.0.161 -p 17890",1);  
-$statfWrapper->monitorProperty("127.0.0.1","userdefined",'Sum',2);  
-$statfWrapper->monitorProperty("127.0.0.1","userdefined",'Count',2);  
+
+$statfWrapper = new \Tars\monitor\PropertyFWrapper("tars.tarsregistry.QueryObj@tcp -h 172.16.0.161 -p 17890",1);
+
+$statfWrapper->monitorProperty("127.0.0.1","userdefined",'Sum',2);
+
+$statfWrapper->monitorProperty("127.0.0.1","userdefined",'Count',2);
+
 $statfWrapper->monitorProperty("127.0.0.1","userdefined",'Count',1);
-```
 
-### 监控查看
-数据上报后，用户可在服务监控/特性监控选项卡中查看上报的数据。
+` ` ` `
 
-## 其他
-因为其他模块已经集成了本模块， __所以一般情况下，服务脚本无需显式使用此模块。__
+
+
+###Monitor view
+
+After data reporting, users can view the reported data in the service monitoring / feature monitoring tab.
+
+
+
+Others
+
+Because other modules have integrated this module, in general, service scripts do not need to explicitly use this module. 
