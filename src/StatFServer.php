@@ -180,7 +180,7 @@ class StatFServer
 
     }
 
-    public function sendStat()
+    public function sendStat( $bFromClient=true)
     {
         $msg = [];
         $table = $this->_cache;
@@ -219,7 +219,7 @@ class StatFServer
         }
 
         if (count($msg) > 0) {
-            $this->reportMicMsg($msg, true);
+            $this->reportMicMsg($msg, $bFromClient );
         }
         return true;
     }
